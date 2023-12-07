@@ -18,7 +18,7 @@ Para executar a aplicação basta executar o seguinte comando na raiz do projeto
 ```
 docker compose up
 ```
-Este irá fazer o build da imagem docker da aplicação e também subirá um servidor SQL Server em um container para persistência dos dados.
+Este comando irá fazer o build da imagem docker da aplicação e também subirá um servidor SQL Server em um container para persistência dos dados.
 
 Assim que o build terminar, acesse em seu navegador http://localhost:8080/swagger
 
@@ -59,17 +59,17 @@ Retorna o valor de saldo de tudo que o cliente já recebeu (recebíveis pagos);
 **Lista de parâmetros:**
 | Parametro        | Descrição                                         | Tipo                           | Obrigatório | Exemplo             |
 |------------------|---------------------------------------------------|--------------------------------|-------------|---------------------|
-| storeId          | Identificador do cliente que receberá a transação | string                         | Sim         | 18164750000164      |
+| storeId          | Identificador do cliente                          | string                         | Sim         | 18164750000164      |
 
 ### Saldo a receber
 Retorna o valor de saldo de tudo que o cliente tem a receber (recebíveis agendados);
 ```
-[GET] http://localhost:8080/Stores/[STOREID]/balances/available
+[GET] http://localhost:8080/Stores/[STOREID]/balances/incoming
 ```
 **Lista de parâmetros:**
 | Parametro        | Descrição                                         | Tipo                           | Obrigatório | Exemplo             |
 |------------------|---------------------------------------------------|--------------------------------|-------------|---------------------|
-| storeId          | Identificador do cliente que receberá a transação | string                         | Sim         | 18164750000164      |
+| storeId          | Identificador do cliente                          | string                         | Sim         | 18164750000164      |
 
 ## Banco de dados
 O banco de dados da aplicação foi criado utilizando a abordagem code-first, com migrations geradas pelo Entity Framework.
