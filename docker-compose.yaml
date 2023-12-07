@@ -1,0 +1,24 @@
+name: simplepsp
+
+services:
+    api:
+        depends_on:
+            - db
+        build: 
+            context: .
+            dockerfile: ./src/SimplePSP.API/Dockerfile
+        ports:
+            - 8080:8080
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings__SQLServer=Server=simplepsp-db-1,1433;Database=simplepsp;User ID=sa;Password=Pass@123;TrustServerCertificate=true"
+    db:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+            - 1433:1433 
+        environment:
+            - "ACCEPT_EULA=Y"
+            - "MSSQL_SA_PASSWORD=Pass@123"
+            - "MSSQL_PID=Express"
+
+    
